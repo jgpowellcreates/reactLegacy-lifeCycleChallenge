@@ -30,11 +30,28 @@
 
 .pokeImg {
   width: 500px;
+  transition: all 1s;
+  position: relative;
+  top: 10em;
+}
+
+.hiddenImg {
+  width: 500px;
+  filter: brightness(0%);
+  position: relative;
 }
 
 .pokeName {
   font-family: 'Press Start 2P', cursive;
   text-transform: uppercase;
   margin-top: -50px;
+  transition: all 1s;
+  position: relative;
+  top: 2em;
 }
 
+.hiddenName {
+  visibility: hidden;
+  position: relative;
+  top: 3em;
+}
