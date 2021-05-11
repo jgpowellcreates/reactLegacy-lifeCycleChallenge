@@ -3,8 +3,7 @@ import './PokeFetch.css';
 
 class Counter extends React.Component {
     constructor(props) {
-        super(props)
-        
+        super(props)   
     }
 
     componentDidMount() {
@@ -19,19 +18,16 @@ class Counter extends React.Component {
         )
     }
 
-    /* componentDidUpdate() {
-        if (this.secondsLeft === 0) {
-            
-        }
-    } */
-
     componentWillUnmount() {
         console.log("Unmounted complete!")
         this.props.toggleInterval();
         this.props.resetState();
     }
 }
+//This component ^^^ is in charge of the timer. It uses lifecycle methods to alter states.
 
+//This component vvv is the parent that will pass down props.
+//It provides the logic & functions but waits for the child component to call on them.
 class PokeFetch extends Component {
   constructor() {
     super()
@@ -43,13 +39,11 @@ class PokeFetch extends Component {
       secondsLeft: 10
     }
     this.tick = () => this.setState( {secondsLeft: this.state.secondsLeft - 1});
-    //this.resetState = this.resetState.bind(this);
     }
 
     toggleCounter = () => this.setState({showCounter: !this.state.showCounter});
     resetState = () => this.setState({showCounter: false, secondsLeft: 10})  
 
-    interval;
     toggleInterval = () => {
         if (this.interval == null) {
             this.interval = setInterval(() => this.tick(), 1000);
@@ -86,6 +80,7 @@ class PokeFetch extends Component {
   } */
 
   render() {
+      console.log("main boy is re-rendering");
     return (
       <div className={'wrapper'}>
         <button className={'start'} onClick={() => this.fetchPokemon()}>Start!</button>
